@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}PFO3{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-left">
+      <a class="brand" href="{{ url_for('inicio') }}">PFO3</a>
+    </div>
+    <div class="nav-right">
+      {% if session.get('user') %}
+        <span class="user">👤 {{ session.get('user') }}</span>
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+        <a href="{{ url_for('tareas') }}">Tareas</a>
+        <a href="{{ url_for('logout') }}">Salir</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        <a href="{{ url_for('register') }}">Registrarse</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for cat, msg in messages %}
+          <li class="flash {{ cat }}">{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <small>Demo PFO3 — Flask + Sockets + PostgreSQL</small>
+  </footer>
+</body>
+</html>

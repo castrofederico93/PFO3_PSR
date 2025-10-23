@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Iniciar sesión — PFO3{% endblock %}
+{% block content %}
+  <h1>Iniciar sesión</h1>
+  <form method="post" class="card form">
+    <label>
+      Usuario
+      <input name="username" autocomplete="username" required />
+    </label>
+
+    <label>
+      Contraseña
+      <input type="password" name="password" autocomplete="current-password" required />
+    </label>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <p class="muted">
+    ¿No tenés cuenta? <a href="{{ url_for('register') }}">Registrate</a>
+  </p>
+{% endblock %}

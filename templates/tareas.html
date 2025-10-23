@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Tareas — PFO3{% endblock %}
+{% block content %}
+<h1>Tareas</h1>
+
+<form method="post" class="card form" style="margin-bottom:1rem">
+  <label>
+    Tipo de tarea
+    <select name="type" required>
+      <option value="sum">sum(args...)</option>
+      <option value="upper">upper(s)</option>
+      <option value="lower">lower(s)</option>
+    </select>
+  </label>
+
+  <div class="grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+    <label>args (números separados por coma/espacio): <input name="args" placeholder="1, 2, 3"></label>
+    <label>s (texto): <input name="s" placeholder="Hola mundo"></label>
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
+
+{% if error %}
+  <div class="flash danger">Error: {{ error }}</div>
+{% endif %}
+
+{% if result is not none %}
+  <div class="card">
+    <h3>Resultado</h3>
+    <pre style="white-space: pre-wrap;">{{ result }}</pre>
+  </div>
+{% endif %}
+{% endblock %}

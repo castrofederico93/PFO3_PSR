@@ -1,0 +1,114 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --brand: #60a5fa;
+  --ok: #22c55e20;
+  --err: #ef444420;
+  --ok-b: #16a34a;
+  --err-b: #dc2626;
+  --border: #1f2937;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0b1220, #0f172a 60%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.45;
+}
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: 860px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0b1220cc;
+  border-bottom: 1px solid var(--border);
+  padding: .75rem 1rem;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+}
+.nav a { margin-left: 1rem; }
+.nav .brand { font-weight: 700; color: #93c5fd; letter-spacing: .2px; }
+.nav .user { opacity: .85; margin-right: .5rem; }
+
+.footer {
+  text-align: center;
+  opacity: .6;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 1rem 0; }
+h1 { font-size: 1.6rem; }
+.muted { color: var(--muted); }
+
+.card {
+  background: linear-gradient(180deg, #101827, #0f172a);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+.form label {
+  display: block;
+  margin: .75rem 0;
+  color: var(--text);
+}
+
+input[type="text"],
+input[type="password"],
+input:not([type]) {
+  width: 100%;
+  padding: .70rem .8rem;
+  margin-top: .35rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1220;
+  color: var(--text);
+  outline: none;
+}
+input:focus {
+  border-color: #334155;
+  box-shadow: 0 0 0 3px rgba(96,165,250,.15);
+}
+
+button {
+  margin-top: 1rem;
+  padding: .7rem 1rem;
+  background: #1f2937;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+button:hover { background: #374151; }
+
+.flashes {
+  list-style: none;
+  margin: 1rem auto 0;
+  padding: 0 1rem;
+  max-width: 860px;
+}
+.flash {
+  padding: .75rem 1rem;
+  margin: .5rem 0;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.flash.success { background: var(--ok); border-color: var(--ok-b); }
+.flash.danger  { background: var(--err); border-color: var(--err-b); }
