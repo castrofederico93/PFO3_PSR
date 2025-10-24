@@ -1,6 +1,18 @@
 # PFO3 — Cliente web (Flask) + Servidor TCP con workers + PostgreSQL (DB en Docker)
 
-Implementación:
+## 🧭 Diagrama de arquitectura (conceptual — Consigna 1)
+Arquitectura conceptual solicitada por el PFO3:
+
+**Clientes (web/móvil) → Internet → Balanceador (Nginx/HAProxy) → Apps (API REST) → RabbitMQ → Workers (pool de hilos) → PostgreSQL y S3/Object Storage.**
+
+![Arquitectura distribuida](docs/pfo3-arquitectura.png)
+
+> Este diagrama es **conceptual** y responde a la **Consigna 1** del PFO3.  
+> La **Consigna 2** se aborda en la implementación descripta más abajo (servidor por sockets + pool de hilos y cliente).
+
+---
+
+## 🧩 Implementación (resumen — Consigna 2)
 
 - **Cliente**: gateway web en **Flask** (presentación).
 - **Servidor**: servicio **TCP por sockets** que **recibe tareas** y las **distribuye** a un **pool de workers** (concurrency).
@@ -51,7 +63,8 @@ PFO3_PSR/
 │  └─ styles.css
 ├─ docker-compose.yml       # PostgreSQL + Adminer
 ├─ requirements.txt
-└─ .env                     # variables de entorno
+├─ .env                     # variables de entorno
+└─ docs/
 ```
 
 ---
